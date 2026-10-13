@@ -1,0 +1,57 @@
+{
+  "name": "dsh-auto-email",
+  "version": "0.1.0",
+  "description": "每日 AI 三报：自动采集 10 个可靠信源，程序打分筛选，LLM 排序与解读，每天定时把三条推送到你的邮箱，并附带可审计的可信度依据。",
+  "type": "module",
+  "main": "lib/index.js",
+  "bin": {
+    "dsh-auto-email": "bin/dsh-auto-email.mjs"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "docs",
+    "scripts",
+    "config.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/all.mjs",
+    "test:live": "node test/all.mjs --live",
+    "install:plugin": "node scripts/install.mjs",
+    "start": "node bin/dsh-auto-email.mjs",
+    "preview": "node bin/dsh-auto-email.mjs --dry-run -v",
+    "status": "node bin/dsh-auto-email.mjs --status"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "ai",
+    "newsletter",
+    "daily-digest",
+    "email",
+    "smtp",
+    "arxiv",
+    "llm"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web"
+    },
+    "engines": {
+      "dsh": ">=0.2.0-rc.2"
+    }
+  }
+}

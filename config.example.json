@@ -1,0 +1,48 @@
+{
+  "$comment": [
+    "dsh-auto-email 配置示例。两种用法：",
+    "  1) DSH 插件：把需要的键拷进 cordis.patch.yml 里本插件的 config 段；",
+    "     点侧边栏面板上改的则存到 <userData>/dsh-auto-email/config.json。",
+    "  2) 命令行：node bin/dsh-auto-email.mjs --config config.local.json",
+    "凭据不要写在这里 —— 写进 <userData>/dsh-auto-email.secret.json，或设环境变量 DEEPSEEK_API_KEY。",
+    "未列出的键一律用内置默认值（见 lib/config.js 的 DEFAULTS）。"
+  ],
+
+  "digest": {
+    "top_n": 3,
+    "window_hours": 26,
+    "fallback_window_hours": [48, 72],
+    "min_importance": 6,
+    "max_candidates_for_ranking": 90,
+    "arxiv_max_items": 22,
+    "hn_max_items": 30,
+    "send_when_empty": true,
+    "backfill_thin": 14,
+    "brief_max_chars": 40
+  },
+
+  "llm": {
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-chat",
+    "timeoutMs": 180000
+  },
+
+  "email": {
+    "smtp_host": "smtp.qq.com",
+    "smtp_port": 465,
+    "use_ssl": true,
+    "username": "you@qq.com",
+    "from_name": "AI 每日三报",
+    "to": ["you@qq.com"],
+    "timezone": "Asia/Shanghai",
+    "timeoutMs": 45000
+  },
+
+  "schedule": {
+    "enabled": true,
+    "time": "08:00",
+    "catch_up_hours": 12,
+    "timezone": "Asia/Shanghai",
+    "tick_seconds": 30
+  }
+}

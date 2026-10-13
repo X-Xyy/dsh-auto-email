@@ -1,0 +1,17 @@
+# Normalise everything to LF in the repository, whatever the working copy uses.
+# Without this, cloning on Windows and opening in Notepad is fine, but the same
+# repo cloned on Linux gets CRLF in .mjs files and shell-adjacent tooling starts
+# reporting phantom diffs.
+* text=auto eol=lf
+
+# Binary: never touch, never diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+
+# Keep GitHub's language stats honest — the plugin ships JS, not Markdown.
+*.md linguist-documentation
+test/difflib-parity.json linguist-generated
