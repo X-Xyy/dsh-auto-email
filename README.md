@@ -32,7 +32,20 @@
 
 ## 安装
 
-### 方式 A：作为 DSH 插件
+### 方式 A：`dsh plugin`（推荐，声明式）
+
+```sh
+dsh plugin --profile web add github:X-Xyy/dsh-auto-email
+```
+
+包里的 `cordis.patch.yml` 声明了 host 半边的挂载，`package.json` 的 `dsh.bundle` 让 loader 自动应用它 ——
+不用手工拷文件、不用改 profile 的 patch 文件。重启（或刷新浏览器页面）后侧边栏面板出现；
+卸载是 `dsh plugin --profile web remove dsh-auto-email`。
+
+> 两种安装方式不要同时用：bundle 挂载的 id 是 `dsh-auto-email`，下面本地挂载用的是
+> `dsh-auto-email-1`（带缓存破坏后缀），同时存在会让同一个插件被挂两次。
+
+### 方式 B：本地挂载（开发 / 改代码时用）
 
 一条命令（拷贝 + 挂载，幂等，可回滚）：
 
@@ -82,7 +95,7 @@ node bin/dsh-auto-email.mjs --migrate <Python 版的 seen.json 路径>
 取旧了会重发，取新了会漏发，两个方向都不能错。导入**幂等**，第二次运行报告 0 条新增；
 导入前把现有 `state.json` 备份成 `state.json.bak-<时间戳>`；只写状态文件，不发信、不动归档。
 
-### 方式 B：命令行 / 任务计划程序
+### 方式 C：命令行 / 任务计划程序
 
 ```powershell
 node bin/dsh-auto-email.mjs --dry-run -v     # 先干跑看看会选哪三条

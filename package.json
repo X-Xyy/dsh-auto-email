@@ -1,6 +1,6 @@
 {
   "name": "dsh-auto-email",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "每日 AI 三报：自动采集 10 个可靠信源，程序打分筛选，LLM 排序与解读，每天定时把三条推送到你的邮箱，并附带可审计的可信度依据。",
   "type": "module",
   "main": "lib/index.js",
@@ -19,6 +19,7 @@
     "lib",
     "docs",
     "scripts",
+    "cordis.patch.yml",
     "config.example.json",
     "README.md",
     "LICENSE"
@@ -46,7 +47,18 @@
   "engines": {
     "node": ">=20"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/X-Xyy/dsh-auto-email.git"
+  },
+  "homepage": "https://github.com/X-Xyy/dsh-auto-email#readme",
+  "bugs": {
+    "url": "https://github.com/X-Xyy/dsh-auto-email/issues"
+  },
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web"
     },

@@ -1,0 +1,6 @@
+# DSH bundle patch: mount the plugin's host half when installed as a package
+# (`dsh plugin --profile web add github:X-Xyy/dsh-auto-email`).
+# The local/dev mount path in scripts/install.mjs uses its own suffixed id instead.
+- insert:
+    - id: dsh-auto-email
+      name: dsh-auto-email
